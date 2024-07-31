@@ -3,16 +3,9 @@ public abstract class Person {
     private int age;
     private String gender;
 
-    public Person() {
-        this.name = "";
-        this.age = 0;
-        this.gender = "";
-    }
 
-    public Person(String name, int age, String gender) {
-        this.name = name;
-        this.age = age;
-        this.gender = gender;
+    public String Details() {
+        return "Person, name: " + getName() + ", age: " + getName() + ", gender: " + getGender();
     }
 
     public String getName() {
