@@ -5,6 +5,7 @@ public class AssignmentTwo {
         assignment.partFourA();
         assignment.partFourB();
         assignment.partFive();
+        assignment.partSix();
 
     }
     public void partThree() {
@@ -100,7 +101,7 @@ public class AssignmentTwo {
         // Implementation for part five
         // Create a new Ride object
         Employee operator = new Employee("Randi", 27, "Male", "E004", "Operator");
-        Ride rollerCoaster = new Ride("Taipan", 12, operator, 3);
+        Ride taipan = new Ride("Taipan", 12, operator, 3);
 
         // Create Visitor objects
         Visitor visitor1 = new Visitor("May", 14, "Female", "V016", "Regular");
@@ -115,52 +116,52 @@ public class AssignmentTwo {
         Visitor visitor10 = new Visitor("Sammy", 18, "Male", "V025", "Regular");
 
         // Add visitors to the queue
-        rollerCoaster.addVisitorToQueue(visitor1);
-        rollerCoaster.addVisitorToQueue(visitor2);
-        rollerCoaster.addVisitorToQueue(visitor3);
-        rollerCoaster.addVisitorToQueue(visitor4);
-        rollerCoaster.addVisitorToQueue(visitor5);
-        rollerCoaster.addVisitorToQueue(visitor6);
-        rollerCoaster.addVisitorToQueue(visitor7);
-        rollerCoaster.addVisitorToQueue(visitor8);
-        rollerCoaster.addVisitorToQueue(visitor9);
-        rollerCoaster.addVisitorToQueue(visitor10);
+        taipan.addVisitorToQueue(visitor1);
+        taipan.addVisitorToQueue(visitor2);
+        taipan.addVisitorToQueue(visitor3);
+        taipan.addVisitorToQueue(visitor4);
+        taipan.addVisitorToQueue(visitor5);
+        taipan.addVisitorToQueue(visitor6);
+        taipan.addVisitorToQueue(visitor7);
+        taipan.addVisitorToQueue(visitor8);
+        taipan.addVisitorToQueue(visitor9);
+        taipan.addVisitorToQueue(visitor10);
 
         // Print all visitors in the queue
-        rollerCoaster.printQueue();
+        taipan.printQueue();
 
         // Run one cycle
-        rollerCoaster.runOneCycle();
+        taipan.runOneCycle();
 
         // Print all visitors in the queue after one cycle is run
-        rollerCoaster.printQueue();
+        taipan.printQueue();
 
         // Print all visitors in the collection
-        rollerCoaster.printRideHistory();
+        taipan.printRideHistory();
     }
 
     public void partSix() {
         // Implementation for part six
         // Create a new Ride object
         Employee operator = new Employee("Richard", 30, "Male", "E004", "Operator");
-        Ride rollerCoaster = new Ride("Twin Dragon", 12, operator, 2);
+        Ride twinDragon = new Ride("Twin Dragon", 12, operator, 2);
 
         // Create Visitor objects
-        Visitor visitor1 = new Visitor("Alice", 15, "Female", "V001", "Regular");
-        Visitor visitor2 = new Visitor("Toby", 16, "Male", "V002", "Regular");
-        Visitor visitor3 = new Visitor("Willy", 17, "Male", "V003", "Regular");
-        Visitor visitor4 = new Visitor("Lila", 16, "Female", "V004", "Regular");
-        Visitor visitor5 = new Visitor("Nora", 15, "Female", "V005", "Regular");
+        Visitor visitor1 = new Visitor("Alice", 15, "Female", "V026", "Regular");
+        Visitor visitor2 = new Visitor("Toby", 16, "Male", "V027", "Regular");
+        Visitor visitor3 = new Visitor("Willy", 17, "Male", "V028", "Regular");
+        Visitor visitor4 = new Visitor("Lila", 16, "Female", "V029", "Regular");
+        Visitor visitor5 = new Visitor("Nora", 15, "Female", "V030", "Regular");
 
         // Add visitors to the ride history
-        rollerCoaster.addVisitorToRideHistory(visitor1);
-        rollerCoaster.addVisitorToRideHistory(visitor2);
-        rollerCoaster.addVisitorToRideHistory(visitor3);
-        rollerCoaster.addVisitorToRideHistory(visitor4);
-        rollerCoaster.addVisitorToRideHistory(visitor5);
+        twinDragon.addVisitorToRideHistory(visitor1);
+        twinDragon.addVisitorToRideHistory(visitor2);
+        twinDragon.addVisitorToRideHistory(visitor3);
+        twinDragon.addVisitorToRideHistory(visitor4);
+        twinDragon.addVisitorToRideHistory(visitor5);
 
         // Export the Visitor history to a file
-        rollerCoaster.writeRideHistoryToFile("rideHistory.csv");
+        twinDragon.writeRideHistoryToFile("rideHistory.csv");
     }
 
     public void partSeven() {
