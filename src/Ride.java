@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 
@@ -6,8 +8,8 @@ public class Ride implements RideInterface {
     private String rideName;
     private int minAge;
     private Employee operator;
-    private Queue<Visitor> visitorQueue = new LinkedList<>();
-    private LinkedList<String> rideHistory = new LinkedList<>();
+    private Queue<Visitor> visitorQueue;
+    private List<Visitor> rideHistory;
 
 
 
@@ -15,6 +17,8 @@ public class Ride implements RideInterface {
         this.setRideName(rideName);
         this.setMinAge(minAge);
         this.setOperator(operator);
+        this.visitorQueue = new LinkedList<>();
+        this.rideHistory = new ArrayList<>();
     }
 
 
@@ -81,9 +85,9 @@ public class Ride implements RideInterface {
     public void runOneCycle() {
         if (!visitorQueue.isEmpty()) {
             Visitor visitor = visitorQueue.poll();
-            String historyEntry = "Visitor " + visitor.getName() + " enjoyed the ride " + rideName;
-            rideHistory.add(historyEntry);
-            System.out.println(historyEntry);
+//            String historyEntry = "Visitor " + visitor.getName() + " enjoyed the ride " + rideName;
+            rideHistory.add(visitor);
+            System.out.println("Running one cycle with visitor: " + visitor.getName());
         } else {
             System.out.println("No visitors in the queue for the ride.");
         }
@@ -92,8 +96,8 @@ public class Ride implements RideInterface {
     @Override
     public void printRideHistory() {
         System.out.println("Ride history for " + rideName + ":");
-        for (String entry : rideHistory) {
-            System.out.println(entry);
+        for (Visitor visitor : rideHistory) {
+            System.out.println(visitor.getName());
         }
     }
 }
