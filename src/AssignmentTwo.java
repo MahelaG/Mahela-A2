@@ -6,6 +6,7 @@ public class AssignmentTwo {
         assignment.partFourB();
         assignment.partFive();
         assignment.partSix();
+        assignment.partSeven();
 
     }
     public void partThree() {
@@ -166,5 +167,17 @@ public class AssignmentTwo {
 
     public void partSeven() {
         // Implementation for part seven
+        // Create a new Ride object
+        Ride rollerCoaster = new Ride();
+
+        // Import the file created in the previous part of the assignment
+        rollerCoaster.readRideHistoryFromFile("rideHistory.csv");
+
+        // Print the number of Visitors in the LinkedList to confirm the correct number of Visitors were imported
+        int numberOfVisitors = rollerCoaster.getNumberOfVisitorsInRideHistory();
+        System.out.println("Number of visitors in the ride history: " + numberOfVisitors);
+
+        // Print all Visitors in the LinkedList to confirm the details of each Visitor were imported correctly
+        rollerCoaster.printRideHistory();
     }
 }

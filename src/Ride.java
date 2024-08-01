@@ -1,9 +1,7 @@
+import java.io.*;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Collections;
-import java.io.BufferedWriter;
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class Ride implements RideInterface {
     private String rideName;
@@ -13,6 +11,15 @@ public class Ride implements RideInterface {
     private LinkedList<Visitor> rideHistory;
     private int maxRider;
     private int numOfCycle;
+
+    public Ride(){
+        this.setRideName(null);
+        this.setMinAge(0);
+        this.setOperator(null);
+        this.visitorQueue = new LinkedList<>();
+        this.rideHistory = new LinkedList<>();
+        this.numOfCycle = 0;
+    }
 
 
 
@@ -150,6 +157,29 @@ public class Ride implements RideInterface {
             System.out.println("Ride history successfully written to " + filename);
         } catch (IOException e) {
             System.out.println("Error writing to file: " + e.getMessage());
+        }
+    }
+
+    public void readRideHistoryFromFile(String filename) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                String[] details = line.split(",");
+                if (details.length == 5) {
+                    String name = details[0];
+                    int age = Integer.parseInt(details[1]);
+                    String gender = details[2];
+                    String visitorId = details[3];
+                    String visitorType = details[4];
+                    Visitor visitor = new Visitor(name, age, gender, visitorId, visitorType);
+                    rideHistory.add(visitor);
+                }
+            }
+            System.out.println("Ride history successfully read from " + filename);
+        } catch (IOException e) {
+            System.out.println("Error reading from file: " + e.getMessage());
+        } catch (NumberFormatException e) {
+            System.out.println("Error parsing visitor details: " + e.getMessage());
         }
     }
 }
