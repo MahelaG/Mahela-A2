@@ -2,6 +2,8 @@ public class AssignmentTwo {
     public static void main(String[] args) {
         AssignmentTwo assignment = new AssignmentTwo();
         assignment.partThree();
+        assignment.partFourA();
+        assignment.partFourB();
 
     }
     public void partThree() {
@@ -63,6 +65,34 @@ public class AssignmentTwo {
 
     public void partFourB() {
         // Implementation for part four B
+        // Create a new Ride object
+        Employee operator = new Employee("Lisa", 40, "Female", "E003", "Operator");
+        Ride ferrisWheel = new Ride("Ferris Wheel", 8, operator);
+
+        // Create Visitor objects
+        Visitor visitor1 = new Visitor("Kim", 12, "Male", "V011", "Regular");
+        Visitor visitor2 = new Visitor("Saf", 14, "Male", "V012", "Regular");
+        Visitor visitor3 = new Visitor("Rose", 13, "Female", "V013", "Regular");
+        Visitor visitor4 = new Visitor("Jemmie", 15, "Female", "V014", "Regular");
+        Visitor visitor5 = new Visitor("Branch", 11, "Male", "V015", "Regular");
+
+        // Add visitors to the collection
+        ferrisWheel.addVisitorToRideHistory(visitor1);
+        ferrisWheel.addVisitorToRideHistory(visitor2);
+        ferrisWheel.addVisitorToRideHistory(visitor3);
+        ferrisWheel.addVisitorToRideHistory(visitor4);
+        ferrisWheel.addVisitorToRideHistory(visitor5);
+
+        // Print all visitors in the collection
+        System.out.println("Before sorting:");
+        ferrisWheel.printRideHistory();
+
+        // Sort the collection
+        ferrisWheel.sortRideHistory();
+
+        // Print all visitors in the collection again to show that the collection has been sorted
+        System.out.println("After sorting:");
+        ferrisWheel.printRideHistory();
     }
 
     public void partFive() {

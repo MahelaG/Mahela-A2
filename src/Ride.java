@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-
+import java.util.Collections;
 
 public class Ride implements RideInterface {
     private String rideName;
@@ -115,5 +115,10 @@ public class Ride implements RideInterface {
         int count = rideHistory.size();
         System.out.println("Number of visitors in ride history: " + count);
         return count;
+    }
+
+    public void sortRideHistory() {
+        Collections.sort(rideHistory, new VisitorComparator());
+        System.out.println("Ride history sorted.");
     }
 }
