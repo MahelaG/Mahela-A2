@@ -99,20 +99,20 @@ public class AssignmentTwo {
     public void partFive() {
         // Implementation for part five
         // Create a new Ride object
-        Employee operator = new Employee("Mark", 28, "Male", "E004", "Operator");
+        Employee operator = new Employee("Randi", 28, "Male", "E004", "Operator");
         Ride rollerCoaster = new Ride("Roller Coaster", 12, operator, 3);
 
         // Create Visitor objects
-        Visitor visitor1 = new Visitor("Alice", 14, "Female", "V001", "Regular");
-        Visitor visitor2 = new Visitor("Bob", 16, "Male", "V002", "Regular");
-        Visitor visitor3 = new Visitor("Charlie", 15, "Male", "V003", "Regular");
-        Visitor visitor4 = new Visitor("Diana", 13, "Female", "V004", "Regular");
-        Visitor visitor5 = new Visitor("Eve", 17, "Female", "V005", "Regular");
-        Visitor visitor6 = new Visitor("Frank", 12, "Male", "V006", "Regular");
-        Visitor visitor7 = new Visitor("Grace", 16, "Female", "V007", "Regular");
-        Visitor visitor8 = new Visitor("Hank", 15, "Male", "V008", "Regular");
-        Visitor visitor9 = new Visitor("Ivy", 14, "Female", "V009", "Regular");
-        Visitor visitor10 = new Visitor("Jack", 18, "Male", "V010", "Regular");
+        Visitor visitor1 = new Visitor("May", 14, "Female", "V001", "Regular");
+        Visitor visitor2 = new Visitor("Ran", 16, "Male", "V002", "Regular");
+        Visitor visitor3 = new Visitor("Jerry", 15, "Male", "V003", "Regular");
+        Visitor visitor4 = new Visitor("Jan", 13, "Female", "V004", "Regular");
+        Visitor visitor5 = new Visitor("Nicki", 17, "Female", "V005", "Regular");
+        Visitor visitor6 = new Visitor("Kim", 12, "Male", "V006", "Regular");
+        Visitor visitor7 = new Visitor("Mel", 16, "Female", "V007", "Regular");
+        Visitor visitor8 = new Visitor("Sam", 15, "Male", "V008", "Regular");
+        Visitor visitor9 = new Visitor("Abby", 14, "Female", "V009", "Regular");
+        Visitor visitor10 = new Visitor("Sammy", 18, "Male", "V010", "Regular");
 
         // Add visitors to the queue
         rollerCoaster.addVisitorToQueue(visitor1);
