@@ -1,6 +1,4 @@
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
 import java.util.Collections;
 
@@ -9,16 +7,21 @@ public class Ride implements RideInterface {
     private int minAge;
     private Employee operator;
     private Queue<Visitor> visitorQueue;
-    private List<Visitor> rideHistory;
+    private LinkedList<Visitor> rideHistory;
+    private int maxRider;
+    private int numOfCycle;
 
 
 
-    public Ride(String rideName, int minAge, Employee operator){
+    public Ride(String rideName, int minAge, Employee operator, int maxRider){
         this.setRideName(rideName);
         this.setMinAge(minAge);
         this.setOperator(operator);
         this.visitorQueue = new LinkedList<>();
-        this.rideHistory = new ArrayList<>();
+        this.rideHistory = new LinkedList<>();
+        this.maxRider = maxRider;
+        this.numOfCycle = 0;
+
     }
 
 
@@ -88,9 +91,22 @@ public class Ride implements RideInterface {
 //            String historyEntry = "Visitor " + visitor.getName() + " enjoyed the ride " + rideName;
             rideHistory.add(visitor);
             System.out.println("Running one cycle with visitor: " + visitor.getName());
-        } else {
+        }
+        else if (operator == null) {
+            System.out.println("No operator assigned to run the ride.");
+        }
+        else {
             System.out.println("No visitors in the queue for the ride.");
         }
+
+        int riders = Math.min(maxRider, visitorQueue.size());
+        for (int i = 0; i < riders; i++){
+            Visitor visitor = visitorQueue.poll();
+            rideHistory.add(visitor);
+            System.out.println(visitor.getName() + " is taking the ride. ");
+        }
+        numOfCycle++;
+        System.out.println("Ride has been run " + numOfCycle + "times");
     }
 
     @Override
