@@ -100,4 +100,20 @@ public class Ride implements RideInterface {
             System.out.println(visitor.getName());
         }
     }
+    public void addVisitorToRideHistory(Visitor visitor) {
+        rideHistory.add(visitor);
+        System.out.println(visitor.getName() + " added to the ride history.");
+    }
+
+    public boolean isVisitorInRideHistory(Visitor visitor) {
+        boolean found = rideHistory.contains(visitor);
+        System.out.println(visitor.getName() + (found ? " is" : " is not") + " in the ride history.");
+        return found;
+    }
+
+    public int getNumberOfVisitorsInRideHistory() {
+        int count = rideHistory.size();
+        System.out.println("Number of visitors in ride history: " + count);
+        return count;
+    }
 }

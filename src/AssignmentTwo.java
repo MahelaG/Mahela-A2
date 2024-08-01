@@ -33,6 +33,32 @@ public class AssignmentTwo {
 
     public void partFourA() {
         // Implementation for part four A
+        // Create a new Ride object
+        Employee operator = new Employee("Sham", 35, "Female", "E002", "Operator");
+        Ride thunderstorm = new Ride("Thunderstorm", 10, operator);
+
+        // Create Visitor objects
+        Visitor visitor1 = new Visitor("Tomy", 12, "Male", "V006", "Regular");
+        Visitor visitor2 = new Visitor("Sherry", 14, "Female", "V007", "Regular");
+        Visitor visitor3 = new Visitor("Ken", 13, "Male", "V008", "Regular");
+        Visitor visitor4 = new Visitor("Danial", 15, "Male", "V009", "Regular");
+        Visitor visitor5 = new Visitor("Anni", 16, "Female", "V010", "Regular");
+
+        // Add visitors to the collection
+        thunderstorm.addVisitorToRideHistory(visitor1);
+        thunderstorm.addVisitorToRideHistory(visitor2);
+        thunderstorm.addVisitorToRideHistory(visitor3);
+        thunderstorm.addVisitorToRideHistory(visitor4);
+        thunderstorm.addVisitorToRideHistory(visitor5);
+
+        // Check if a visitor is in the collection
+        thunderstorm.isVisitorInRideHistory(visitor3);
+
+        // Print the number of visitors in the collection
+        thunderstorm.getNumberOfVisitorsInRideHistory();
+
+        // Print all visitors in the collection
+        thunderstorm.printRideHistory();
     }
 
     public void partFourB() {
