@@ -36,4 +36,5 @@ public class Visitor extends Person {
     public String Details() {
         return "Visitor, name: " + getName() + ", age: " + getAge() + ", gender: " + getGender() + ", id: " + getVisitorId() + ", ticket type: " + getTicketType();
     }
+
 }

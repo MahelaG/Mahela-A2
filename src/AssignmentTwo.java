@@ -99,20 +99,20 @@ public class AssignmentTwo {
     public void partFive() {
         // Implementation for part five
         // Create a new Ride object
-        Employee operator = new Employee("Randi", 28, "Male", "E004", "Operator");
-        Ride rollerCoaster = new Ride("Roller Coaster", 12, operator, 3);
+        Employee operator = new Employee("Randi", 27, "Male", "E004", "Operator");
+        Ride rollerCoaster = new Ride("Taipan", 12, operator, 3);
 
         // Create Visitor objects
-        Visitor visitor1 = new Visitor("May", 14, "Female", "V001", "Regular");
-        Visitor visitor2 = new Visitor("Ran", 16, "Male", "V002", "Regular");
-        Visitor visitor3 = new Visitor("Jerry", 15, "Male", "V003", "Regular");
-        Visitor visitor4 = new Visitor("Jan", 13, "Female", "V004", "Regular");
-        Visitor visitor5 = new Visitor("Nicki", 17, "Female", "V005", "Regular");
-        Visitor visitor6 = new Visitor("Kim", 12, "Male", "V006", "Regular");
-        Visitor visitor7 = new Visitor("Mel", 16, "Female", "V007", "Regular");
-        Visitor visitor8 = new Visitor("Sam", 15, "Male", "V008", "Regular");
-        Visitor visitor9 = new Visitor("Abby", 14, "Female", "V009", "Regular");
-        Visitor visitor10 = new Visitor("Sammy", 18, "Male", "V010", "Regular");
+        Visitor visitor1 = new Visitor("May", 14, "Female", "V016", "Regular");
+        Visitor visitor2 = new Visitor("Ran", 16, "Male", "V017", "Regular");
+        Visitor visitor3 = new Visitor("Jerry", 15, "Male", "V018", "Regular");
+        Visitor visitor4 = new Visitor("Jan", 13, "Female", "V019", "Regular");
+        Visitor visitor5 = new Visitor("Nicki", 17, "Female", "V020", "Regular");
+        Visitor visitor6 = new Visitor("Kim", 12, "Male", "V021", "Regular");
+        Visitor visitor7 = new Visitor("Mel", 16, "Female", "V022", "Regular");
+        Visitor visitor8 = new Visitor("Sam", 15, "Male", "V023", "Regular");
+        Visitor visitor9 = new Visitor("Abby", 14, "Female", "V024", "Regular");
+        Visitor visitor10 = new Visitor("Sammy", 18, "Male", "V025", "Regular");
 
         // Add visitors to the queue
         rollerCoaster.addVisitorToQueue(visitor1);
@@ -141,6 +141,26 @@ public class AssignmentTwo {
 
     public void partSix() {
         // Implementation for part six
+        // Create a new Ride object
+        Employee operator = new Employee("Richard", 30, "Male", "E004", "Operator");
+        Ride rollerCoaster = new Ride("Twin Dragon", 12, operator, 2);
+
+        // Create Visitor objects
+        Visitor visitor1 = new Visitor("Alice", 15, "Female", "V001", "Regular");
+        Visitor visitor2 = new Visitor("Toby", 16, "Male", "V002", "Regular");
+        Visitor visitor3 = new Visitor("Willy", 17, "Male", "V003", "Regular");
+        Visitor visitor4 = new Visitor("Lila", 16, "Female", "V004", "Regular");
+        Visitor visitor5 = new Visitor("Nora", 15, "Female", "V005", "Regular");
+
+        // Add visitors to the ride history
+        rollerCoaster.addVisitorToRideHistory(visitor1);
+        rollerCoaster.addVisitorToRideHistory(visitor2);
+        rollerCoaster.addVisitorToRideHistory(visitor3);
+        rollerCoaster.addVisitorToRideHistory(visitor4);
+        rollerCoaster.addVisitorToRideHistory(visitor5);
+
+        // Export the Visitor history to a file
+        rollerCoaster.writeRideHistoryToFile("rideHistory.csv");
     }
 
     public void partSeven() {

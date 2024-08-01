@@ -1,6 +1,9 @@
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Collections;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Ride implements RideInterface {
     private String rideName;
@@ -136,5 +139,17 @@ public class Ride implements RideInterface {
     public void sortRideHistory() {
         Collections.sort(rideHistory, new VisitorComparator());
         System.out.println("Ride history sorted.");
+    }
+
+    public void writeRideHistoryToFile(String filename) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
+            for (Visitor visitor : rideHistory) {
+                writer.write(visitor.getName() + "," + visitor.getAge() + "," + visitor.getGender() + "," + visitor.getVisitorId() + "," + visitor.getTicketType());
+                writer.newLine();
+            }
+            System.out.println("Ride history successfully written to " + filename);
+        } catch (IOException e) {
+            System.out.println("Error writing to file: " + e.getMessage());
+        }
     }
 }
