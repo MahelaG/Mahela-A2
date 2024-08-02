@@ -144,7 +144,7 @@ public class AssignmentTwo {
     public void partSix() {
         // Implementation for part six
         // Create a new Ride object
-        Employee operator = new Employee("Richard", 30, "Male", "E004", "Operator");
+        Employee operator = new Employee("Richard", 30, "Male", "E005", "Operator");
         Ride twinDragon = new Ride("Twin Dragon", 12, operator, 2);
 
         // Create Visitor objects
@@ -168,16 +168,17 @@ public class AssignmentTwo {
     public void partSeven() {
         // Implementation for part seven
         // Create a new Ride object
-        Ride rollerCoaster = new Ride();
+        Ride twinDragon = new Ride();
 
         // Import the file created in the previous part of the assignment
-        rollerCoaster.readRideHistoryFromFile("rideHistory.csv");
+        twinDragon.readRideHistoryFromFile("rideHistory.csv");
 
         // Print the number of Visitors in the LinkedList to confirm the correct number of Visitors were imported
-        int numberOfVisitors = rollerCoaster.getNumberOfVisitorsInRideHistory();
+        int numberOfVisitors = twinDragon.getNumberOfVisitorsInRideHistory();
         System.out.println("Number of visitors in the ride history: " + numberOfVisitors);
 
         // Print all Visitors in the LinkedList to confirm the details of each Visitor were imported correctly
-        rollerCoaster.printRideHistory();
+        twinDragon.printRideHistory();
+
     }
 }

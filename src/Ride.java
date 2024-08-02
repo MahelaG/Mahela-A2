@@ -2,6 +2,8 @@ import java.io.*;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Collections;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 
 public class Ride implements RideInterface {
     private String rideName;
@@ -11,6 +13,7 @@ public class Ride implements RideInterface {
     private LinkedList<Visitor> rideHistory;
     private int maxRider;
     private int numOfCycle;
+    private final Lock lock = new ReentrantLock();
 
     public Ride(){
         this.setRideName(null);
@@ -69,21 +72,42 @@ public class Ride implements RideInterface {
 
     @Override
     public void addVisitorToQueue(Visitor visitor) {
-        if (visitor.getAge() >= minAge) {
-            visitorQueue.add(visitor);
-            System.out.println("Visitor " + visitor.getName() + " has been added to the queue.");
-        } else {
-            System.out.println("Visitor " + visitor.getName() + " is too young for the ride.");
+        lock.lock();
+        try{
+            if (visitor.getAge() >= minAge) {
+                visitorQueue.add(visitor);
+                System.out.println("Visitor " + visitor.getName() + " has been added to the queue.");
+            } else {
+                System.out.println("Visitor " + visitor.getName() + " is too young for the ride.");
+            }
+        } finally {
+            lock.unlock();
         }
+//        if (visitor.getAge() >= minAge) {
+//            visitorQueue.add(visitor);
+//            System.out.println("Visitor " + visitor.getName() + " has been added to the queue.");
+//        } else {
+//            System.out.println("Visitor " + visitor.getName() + " is too young for the ride.");
+//        }
     }
 
     @Override
     public void removeVisitorFromQueue(Visitor visitor) {
-        if (visitorQueue.remove(visitor)) {
-            System.out.println("Visitor " + visitor.getName() + " has been removed from the queue.");
-        } else {
-            System.out.println("Visitor " + visitor.getName() + " is not in the queue.");
+        lock.lock();
+        try {
+            if (visitorQueue.remove(visitor)) {
+                System.out.println("Visitor " + visitor.getName() + " has been removed from the queue.");
+            } else {
+                System.out.println("Visitor " + visitor.getName() + " is not in the queue.");
+            }
+        } finally {
+            lock.unlock();
         }
+//        if (visitorQueue.remove(visitor)) {
+//            System.out.println("Visitor " + visitor.getName() + " has been removed from the queue.");
+//        } else {
+//            System.out.println("Visitor " + visitor.getName() + " is not in the queue.");
+//        }
     }
 
     @Override
@@ -110,45 +134,84 @@ public class Ride implements RideInterface {
         }
 
         int riders = Math.min(maxRider, visitorQueue.size());
-        for (int i = 0; i < riders; i++){
-            Visitor visitor = visitorQueue.poll();
-            rideHistory.add(visitor);
-            System.out.println(visitor.getName() + " is taking the ride. ");
+        lock.lock();
+        try {
+            for (int i = 0; i < riders; i++){
+                Visitor visitor = visitorQueue.poll();
+                rideHistory.add(visitor);
+                System.out.println(visitor.getName() + " is taking the ride. ");
+            }
+            numOfCycle++;
+        } finally {
+            lock.unlock();
         }
-        numOfCycle++;
+//        for (int i = 0; i < riders; i++){
+//            Visitor visitor = visitorQueue.poll();
+//            rideHistory.add(visitor);
+//            System.out.println(visitor.getName() + " is taking the ride. ");
+//        }
+//        numOfCycle++;
         System.out.println("Ride has been run " + numOfCycle + "times");
     }
 
     @Override
     public void printRideHistory() {
         System.out.println("Ride history for " + rideName + ":");
-        for (Visitor visitor : rideHistory) {
-            System.out.println(visitor.getName());
+        lock.lock();
+        try {
+            for (Visitor visitor : rideHistory) {
+                System.out.println(visitor.getName());
+            }
+        } finally {
+            lock.unlock();
         }
     }
     public void addVisitorToRideHistory(Visitor visitor) {
-        rideHistory.add(visitor);
-        System.out.println(visitor.getName() + " added to the ride history.");
+        lock.lock();
+        try {
+            rideHistory.add(visitor);
+            System.out.println(visitor.getName() + " added to the ride history.");
+        } finally {
+            lock.unlock();
+        }
     }
 
     public boolean isVisitorInRideHistory(Visitor visitor) {
-        boolean found = rideHistory.contains(visitor);
-        System.out.println(visitor.getName() + (found ? " is" : " is not") + " in the ride history.");
-        return found;
+        lock.lock();
+        try {
+            boolean found = rideHistory.contains(visitor);
+            System.out.println(visitor.getName() + (found ? " is" : " is not") + " in the ride history.");
+            return found;
+        }finally {
+            lock.unlock();
+        }
     }
 
     public int getNumberOfVisitorsInRideHistory() {
-        int count = rideHistory.size();
-        System.out.println("Number of visitors in ride history: " + count);
-        return count;
+        lock.lock();
+        try {
+            int count = rideHistory.size();
+            System.out.println("Number of visitors in ride history: " + count);
+            return count;
+        }finally {
+            lock.unlock();
+        }
     }
 
     public void sortRideHistory() {
-        Collections.sort(rideHistory, new VisitorComparator());
-        System.out.println("Ride history sorted.");
+        lock.lock();
+        try {
+            Collections.sort(rideHistory, new VisitorComparator());
+            System.out.println("Ride history sorted.");
+        } finally {
+            lock.unlock();
+        }
+//        Collections.sort(rideHistory, new VisitorComparator());
+//        System.out.println("Ride history sorted.");
     }
 
     public void writeRideHistoryToFile(String filename) {
+        lock.lock();
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(filename))) {
             for (Visitor visitor : rideHistory) {
                 writer.write(visitor.getName() + "," + visitor.getAge() + "," + visitor.getGender() + "," + visitor.getVisitorId() + "," + visitor.getTicketType());
@@ -157,10 +220,13 @@ public class Ride implements RideInterface {
             System.out.println("Ride history successfully written to " + filename);
         } catch (IOException e) {
             System.out.println("Error writing to file: " + e.getMessage());
+        } finally {
+            lock.unlock();
         }
     }
 
     public void readRideHistoryFromFile(String filename) {
+        lock.lock();
         try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = reader.readLine()) != null) {
@@ -180,6 +246,8 @@ public class Ride implements RideInterface {
             System.out.println("Error reading from file: " + e.getMessage());
         } catch (NumberFormatException e) {
             System.out.println("Error parsing visitor details: " + e.getMessage());
+        }finally {
+            lock.unlock();
         }
     }
 }
