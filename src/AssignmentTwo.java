@@ -162,7 +162,7 @@ public class AssignmentTwo {
         twinDragon.addVisitorToRideHistory(visitor5);
 
         // Export the Visitor history to a file
-        twinDragon.writeRideHistoryToFile("rideHistory.csv");
+        twinDragon.writeRideHistoryToFile("rideHistory.txt");
     }
 
     public void partSeven() {
@@ -171,7 +171,7 @@ public class AssignmentTwo {
         Ride twinDragon = new Ride();
 
         // Import the file created in the previous part of the assignment
-        twinDragon.readRideHistoryFromFile("rideHistory.csv");
+        twinDragon.readRideHistoryFromFile("rideHistory.txt");
 
         // Print the number of Visitors in the LinkedList to confirm the correct number of Visitors were imported
         int numberOfVisitors = twinDragon.getNumberOfVisitorsInRideHistory();
