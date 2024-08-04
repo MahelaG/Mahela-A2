@@ -13,6 +13,7 @@ public class Ride implements RideInterface {
     private LinkedList<Visitor> rideHistory;
     private int maxRider;
     private int numOfCycle;
+    // Create a ReentrantLock instance
     private final Lock lock = new ReentrantLock();
 
     public Ride(){
@@ -83,12 +84,6 @@ public class Ride implements RideInterface {
         } finally {
             lock.unlock();
         }
-//        if (visitor.getAge() >= minAge) {
-//            visitorQueue.add(visitor);
-//            System.out.println("Visitor " + visitor.getName() + " has been added to the queue.");
-//        } else {
-//            System.out.println("Visitor " + visitor.getName() + " is too young for the ride.");
-//        }
     }
 
     @Override
@@ -103,11 +98,6 @@ public class Ride implements RideInterface {
         } finally {
             lock.unlock();
         }
-//        if (visitorQueue.remove(visitor)) {
-//            System.out.println("Visitor " + visitor.getName() + " has been removed from the queue.");
-//        } else {
-//            System.out.println("Visitor " + visitor.getName() + " is not in the queue.");
-//        }
     }
 
     @Override
@@ -145,12 +135,6 @@ public class Ride implements RideInterface {
         } finally {
             lock.unlock();
         }
-//        for (int i = 0; i < riders; i++){
-//            Visitor visitor = visitorQueue.poll();
-//            rideHistory.add(visitor);
-//            System.out.println(visitor.getName() + " is taking the ride. ");
-//        }
-//        numOfCycle++;
         System.out.println("Ride has been run " + numOfCycle + "times");
     }
 
@@ -206,8 +190,6 @@ public class Ride implements RideInterface {
         } finally {
             lock.unlock();
         }
-//        Collections.sort(rideHistory, new VisitorComparator());
-//        System.out.println("Ride history sorted.");
     }
 
     public void writeRideHistoryToFile(String filename) {

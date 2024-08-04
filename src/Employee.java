@@ -33,6 +33,7 @@ public class Employee extends Person {
     public void setPosition(String position) {
         this.position = position;
     }
+    @Override
     public String Details() {
         return "Employee, name: " + getName() + ", age: " + getAge() + ", gender: " + getGender() + ", employee id: " + getEmployeeId() + ", position: " + getPosition();
     }

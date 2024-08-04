@@ -33,6 +33,7 @@ public class Visitor extends Person {
     public void setTicketType(String ticketType) {
         this.ticketType = ticketType;
     }
+    @Override
     public String Details() {
         return "Visitor, name: " + getName() + ", age: " + getAge() + ", gender: " + getGender() + ", id: " + getVisitorId() + ", ticket type: " + getTicketType();
     }
