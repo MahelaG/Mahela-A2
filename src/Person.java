@@ -5,7 +5,7 @@ public abstract class Person {
 
 
     public String Details() {
-        return "Person, name: " + getName() + ", age: " + getName() + ", gender: " + getGender();
+        return "Person, name: " + getName() + ", age: " + getAge() + ", gender: " + getGender();
     }
 
     public String getName() {

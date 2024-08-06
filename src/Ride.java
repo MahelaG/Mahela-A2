@@ -103,8 +103,13 @@ public class Ride implements RideInterface {
     @Override
     public void printQueue() {
         System.out.println("Visitors in the queue for " + rideName + ":");
-        for (Visitor visitor : visitorQueue) {
-            System.out.println(visitor.Details());
+        lock.lock();
+        try {
+            for (Visitor visitor : visitorQueue) {
+                System.out.println(visitor.Details());
+            }
+        }finally {
+            lock.unlock();
         }
     }
 
